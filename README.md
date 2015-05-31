@@ -11,9 +11,9 @@ This app uses [Parse](http://parse.com) (They have some of the bast documentatio
 There are some useful things to know about Parse before we get into this. If you're farmiliar with JSON, this is what parse uses to store data. JSON is just a format to store data. Here's an example. 
 ```JSON
 david = {
-  'height' : 5.11 ,
-  'weight' : 180 ,
-  'hooves' : false
+  height : 5.11 ,
+  weight : 180 ,
+  hooves : false
 } 
 ```
 ```JavaScript
