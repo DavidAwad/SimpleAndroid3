@@ -13,7 +13,7 @@ There are some useful things to know about Parse before we get into this. If you
 david = {
   "height" : 5.11 ,
   "weight" : 180 ,
-  hooves : false
+  "hooves" : false
 } 
 ```
 ```JavaScript
