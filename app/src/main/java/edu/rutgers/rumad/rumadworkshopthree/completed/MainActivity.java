@@ -21,7 +21,7 @@ import edu.rutgers.rumad.rumadworkshopthree.R;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    // layout objects
     Button login, signin, cancel;
     EditText usernameField, passwordField, nameField;
     Context ctx;
@@ -38,38 +38,30 @@ public class MainActivity extends ActionBarActivity {
         login = (Button)findViewById(R.id.loginBtn);
         signin = (Button)findViewById(R.id.signinBtn);
         cancel = (Button)findViewById(R.id.cancelBtn);
-
-
+        
         //initialize text fields
         usernameField = (EditText)findViewById(R.id.username);
         passwordField = (EditText)findViewById(R.id.password);
         nameField = (EditText)findViewById(R.id.name);
-
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (signin.getText().toString().equalsIgnoreCase("Sign Up")) {
-
                     login.setVisibility(View.INVISIBLE);
                     cancel.setVisibility(View.VISIBLE);
                     signin.setText("Done");
                     nameField.setVisibility(View.VISIBLE);
-
                 } else {
-
-
 
                     //initialize a new user
                     ParseUser user = new ParseUser();
-
-
-
+                    // grab info user entered into the form
                     String username = usernameField.getText().toString();
                     String password = passwordField.getText().toString();
                     String name = nameField.getText().toString();
-
+                    
                     //built in method that assigns username to user
                     user.setUsername(username);
 
@@ -80,23 +72,11 @@ public class MainActivity extends ActionBarActivity {
                     user.put("name", name);
                     //where the first parameter is the key and the second parameter is the value
 
-                /*
-                You can do other stuff too like:
-
-                //another built in method
-                user.setEmail(email);
-
-                //whatever you want
-                user.put("age", 18);
-
-                for now we will just do username and password
-                 */
-
                     //check if username or password is not there
                     if (username == null || password == null) {
                         Toast.makeText(ctx, "Oops, you must enter a username AND password to sign up", Toast.LENGTH_SHORT).show();
                     } else {
-                        //parse automatically does it in the background thread so no need for AsyncTasks!!!
+                        //parse automatically does it in the background thread so no need for AsyncTasks!
                         //it also checks automatically if the username was already used
                         user.signUpInBackground(new SignUpCallback() {
                             @Override
@@ -109,8 +89,6 @@ public class MainActivity extends ActionBarActivity {
                                     cancel.setVisibility(View.INVISIBLE);
                                     nameField.setVisibility(View.INVISIBLE);
                                     login.setVisibility(View.INVISIBLE);
-
-
                                     Intent intent = new Intent(ctx, SecondActivity.class);
 
                                     startActivity(intent);
@@ -122,7 +100,6 @@ public class MainActivity extends ActionBarActivity {
                                 }
                             }
                         });
-
                     }
                 }
             }
@@ -177,7 +154,6 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
